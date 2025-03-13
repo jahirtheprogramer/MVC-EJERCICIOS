@@ -4,18 +4,17 @@
  */
 package Modelo;
 public class ModeloSistemaSeguridad {
-    
-    private ModeloSensor sensor1;
-    private ModeloSensor sensor2;
-    private ModeloSensor sensor3;
+    private ModeloSensor[] sensor;
+   
     private boolean esDeNoche;
     private boolean alarmaActivada;
     
 
     public ModeloSistemaSeguridad() {
-        this.sensor1 = new ModeloSensor();
-        this.sensor2 = new ModeloSensor();
-        this.sensor3 = new ModeloSensor();
+         this.sensor = new ModeloSensor[3];
+        this. sensor[0] = new ModeloSensor();
+        this. sensor[1] = new ModeloSensor();
+        this. sensor[2] = new ModeloSensor();
         this.esDeNoche = false;
         this.alarmaActivada = false;
     }
@@ -40,18 +39,22 @@ public class ModeloSistemaSeguridad {
     
 
     public void verificarSensores() {
-        sensor1.detectarMovimiento();
-        sensor2.detectarMovimiento();
-        sensor3.detectarMovimiento();
+       
+       
+        sensor[0].detectarMovimiento();
+         sensor[1].detectarMovimiento();
+         sensor[2].detectarMovimiento();
 
         int sensoresActivos = 0;
-        if (sensor1.isDetectaMovimiento()) sensoresActivos++;//evaluamos si el sensor ha detectado movimiento, si el sensor lanza true, pues sumamos uno a la variable sensores activos
-        if (sensor2.isDetectaMovimiento()) sensoresActivos++;
-        if (sensor3.isDetectaMovimiento()) sensoresActivos++;
-
-        System.out.println("Sensor 1: " + sensor1.isDetectaMovimiento());
-        System.out.println("Sensor 2: " + sensor2.isDetectaMovimiento());
-        System.out.println("Sensor 3: " + sensor3.isDetectaMovimiento());
+        if ( sensor[0].isDetectaMovimiento()) sensoresActivos++;//evaluamos si el sensor ha detectado movimiento, si el sensor lanza true, pues sumamos uno a la variable sensores activos
+        if ( sensor[1].isDetectaMovimiento()) sensoresActivos++;
+        if ( sensor[2].isDetectaMovimiento()) sensoresActivos++;
+        System.out.println("Estado de la alarma: " + alarmaActivada);
+        System.out.println("Es de noche: " + esDeNoche);
+        System.out.println("Sensores activos: " + sensoresActivos);
+        System.out.println("Sensor 1: " +  sensor[0].isDetectaMovimiento());
+        System.out.println("Sensor 2: " +  sensor[1].isDetectaMovimiento());
+        System.out.println("Sensor 3: " +  sensor[2].isDetectaMovimiento());
         System.out.println("Es de noche?: " + esDeNoche);
 
         if (alarmaActivada && esDeNoche && sensoresActivos >= 2) {
