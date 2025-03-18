@@ -6,42 +6,32 @@ package Controlador;
 
 import Modelo.Modelo;
 import Vista.Vista;
+import java.util.Scanner;
+
+
 public class Controlador {
-    private int valor;
-    private Modelo objmodelo;
-    private Vista objVista;
-    
-    
-    
-    public Controlador (Modelo obM, Vista obV){
-        this.objmodelo=obM;
-        this.objVista=obV;
-        
+   private Modelo modelo;
+    private Vista vista;
+    private Scanner scanner;
+
+    public Controlador(Modelo modelo, Vista vista) {
+        this.modelo = modelo;
+        this.vista = vista;
+        this.scanner = new Scanner(System.in);
     }
-   
-    
-    public void Ejecutar(){
-        int opcion=0;
-        do{
-             objVista.saludar();
-             objVista.mostrarMenu();
-              opcion=objVista.obtenerOpcion();
-             switch(opcion){
-                 case 1:
-                     objmodelo.jugar();
-                     break;
-                 case 2:
-                     objVista.despedir();
-                     
-                     break;
-                 default:
-                     System.out.println("ingrese una opcion.");
-                     break;
-                     
-             }
-        }while(opcion !=2);
+
+    public void iniciar() {
+        vista.mostrarMensaje("Ingrese el rango máximo para FizzBuzz:");
+        int rango = scanner.nextInt();
+        ejecutarFizzBuzz(rango);
+    }
+
+    public void ejecutarFizzBuzz(int rango) {
+        for (int i = 1; i <= rango; i++) {
+            String mensaje = modelo.generarMensaje(i);
+            vista.mostrarMensaje("Número: " + i + " -> " + mensaje);
+        }
        
-        
     }
     
     

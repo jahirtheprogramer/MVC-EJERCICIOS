@@ -10,10 +10,12 @@ public class Principal {
 
   
     public static void main(String[] args) {
-        Modelo modelo = new Modelo();
+        
         Vista vista = new Vista();
+        Modelo modelo = new Modelo(100);
        Controlador objcontrolador = new Controlador(modelo,vista);
-       objcontrolador.Ejecutar();
+       
+       objcontrolador.iniciar();
     }
     
 }

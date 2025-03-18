@@ -9,22 +9,31 @@ package Modelo;
  * @author Usuario
  */
 public class Modelo {
-    public void jugar() {
-        for (int i = 1; i <= 100; i++) {
-            System.out.println(generarMensaje(i));
-        }
+    
+     private String[] mensajes;
+    private int indice;
+
+    public Modelo(int tamaño) {
+        mensajes = new String[tamaño];
+        indice = 0;
     }
-    
-    
-    private String generarMensaje(int numero) {
+
+    public String generarMensaje(int numero) {
+        String mensaje;
         if (numero % 3 == 0 && numero % 5 == 0) {
-            return "FizzBuzz";
+            mensaje = "FizzBuzz";
         } else if (numero % 3 == 0) {
-            return "Fizz";
+            mensaje = "Fizz";
         } else if (numero % 5 == 0) {
-            return "Buzz";
+            mensaje = "Buzz";
         } else {
-            return String.valueOf(numero);
+            mensaje = String.valueOf(numero);
         }
+        
+       
+        return mensaje;
     }
+
+ 
+
 }
