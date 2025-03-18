@@ -20,7 +20,8 @@ this.scanner= new Scanner(System.in);
 public void mostrarMenu() {
          System.out.println("Control de invernadero");
          System.out.println("1.Ingresar Temperatura");
-         System.out.println("2.Salir");
+         System.out.println("2.Ver historial");
+         System.out.println("3.Salir");
        
 }
 public int tomarOpcion(){

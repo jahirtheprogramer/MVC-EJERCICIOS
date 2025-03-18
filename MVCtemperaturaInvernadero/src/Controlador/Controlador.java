@@ -29,8 +29,12 @@ vista_invernadero.mostrarMenu();
    case 1:
      int temperatura = this.vista_invernadero.ingresarTemperatura();
      modelo_sensor.ActivarValores(temperatura);
+     modelo_sensor.registrarTemperatura(temperatura);
     break;
    case 2:
+       modelo_sensor.mostrarTemperaturas();
+       break;
+   case 3:
      vista_invernadero.salir();
      break;
     default:
@@ -39,7 +43,7 @@ break;
   }
 
 
-}while(opcion!=2);
+}while(opcion!=3);
 }
 
 
